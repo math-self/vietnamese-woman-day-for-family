@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chúc mừng ngày Phụ nữ Việt Nam 20/10</title>
+<meta name="description" content="Chạm để mở thiệp chúc mừng ngày Phụ nữ Việt Nam">
+
+<!-- Open Graph / Twitter Card metadata for link previews (Zalo, Facebook, Messenger) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:title" content="Quà 20/10 từ người đẳng cấp nhất nhà">
+<meta property="og:description" content="Chạm để mở thiệp chúc mừng ngày Phụ nữ Việt Nam">
+<meta property="og:url" content="https://math-self.github.io/vietnamese-womens-day-card/">
+<meta property="og:image" content="https://math-self.github.io/vietnamese-womens-day-card/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌸%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Baloo 2',system-ui,'Segoe UI',Roboto,sans-serif;background:#FFF3EC;color:#3B1F3A}
+.page{min-height:100vh;overflow:hidden;position:relative}
+.wrap{max-width:1040px;margin:0 auto;padding:32px 20px 64px;display:flex;flex-direction:column;gap:40px}
+.top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:20px;color:#C2185B}
+.date{background:#FFD54F;border:3px solid #3B1F3A;border-radius:999px;padding:4px 16px;font-weight:700}
+.hero{display:flex;flex-wrap:wrap;align-items:center;gap:32px;justify-content:center}
+.hero-text{flex:1 1 320px;display:flex;flex-direction:column;gap:16px}
+h1{margin:0;font-size:clamp(36px,7vw,64px);line-height:1.05;font-weight:800}
+.hero-text p{margin:0;font-size:20px;line-height:1.5}
+.gift{flex:0 1 280px;width:280px;max-width:100%;height:240px;position:relative}
+.gift i{position:absolute;display:block;border:4px solid #3B1F3A}
+h2{margin:0;font-size:32px;font-weight:800;text-align:center}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{border:4px solid #3B1F3A;border-radius:28px;padding:24px 16px;min-height:44px;box-shadow:6px 6px 0 #3B1F3A;display:flex;flex-direction:column;align-items:center;gap:8px;color:#3B1F3A;font-family:inherit;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.card:hover{transform:translateY(-3px) rotate(-1deg)}
+.card:active{transform:translate(3px,3px) scale(.96);box-shadow:2px 2px 0 #3B1F3A}
+.card:focus-visible,.close:focus-visible{outline:4px solid #C2185B;outline-offset:4px}
+.icon{width:72px;height:72px;border-radius:50%;background:#FFF;border:4px solid #3B1F3A;display:flex;align-items:center;justify-content:center}
+.name{font-size:28px;font-weight:800;line-height:1.1}
+.sub{font-size:16px;font-weight:700}
+.hint{font-size:16px;font-weight:500}
+.foot{text-align:center;font-size:16px}
+
+/* Greeting card modal */
+.overlay{position:fixed;inset:0;z-index:40;background:rgba(59,31,58,.55);display:flex;align-items:center;justify-content:center;padding:20px}
+.overlay[hidden]{display:none}
+.dialog{position:relative;max-height:92%;overflow:auto;border:4px solid #3B1F3A;padding:28px;display:flex;flex-direction:column;gap:16px;max-width:560px;width:100%}
+.tag{align-self:flex-start;color:#FFF;border:3px solid #3B1F3A;padding:2px 16px;font-weight:700}
+.to{font-size:32px;font-weight:800}
+.msg{font-size:20px;line-height:1.5}
+.lixi{border:3px #3B1F3A;padding:12px 16px;text-align:center}
+.lixi b{display:block;font-weight:700;font-size:16px}
+.lixi strong{display:block;font-size:40px;font-weight:800;line-height:1.1}
+.lixi span{font-size:14px;font-weight:500}
+.close{align-self:flex-start;background:#FFF;color:#3B1F3A;border:3px solid #3B1F3A;border-radius:999px;padding:10px 24px;font:700 18px 'Baloo 2',system-ui,sans-serif;min-height:44px;cursor:pointer}
+
+/* Animations */
+@keyframes popin{from{opacity:0;transform:translateY(24px) scale(.85)}to{opacity:1;transform:none}}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+@keyframes burst{0%{opacity:1;transform:translate(0,0) scale(.4)}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1.1)}}
+@keyframes coinfall{0%{transform:translateY(0) rotateY(0);opacity:1}85%{opacity:1}100%{transform:translateY(115vh) rotateY(900deg);opacity:0}}
+.pop{animation:popin .6s cubic-bezier(.34,1.56,.64,1) backwards}
+.pop.float{animation:popin .6s cubic-bezier(.34,1.56,.64,1) .2s backwards,bob 3s ease-in-out .9s infinite}
+.cf{position:absolute;top:36px;left:50%;width:14px;height:14px;border:2px solid #3B1F3A;border-radius:50%;pointer-events:none;animation:burst .9s ease-out both}
+.coins{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:80}
+.coin{position:absolute;top:-50px;border-radius:50%;background:#FFD54F;border:3px solid #3B1F3A;box-shadow:inset 0 0 0 3px #FFF3B0;animation:coinfall ease-in both}
+@media (prefers-reduced-motion:reduce){.pop,.pop.float,.cf{animation:none}.coin{display:none}.card{transition:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" stroke="#3B1F3A" stroke-width="2">
+          <circle cx="16" cy="7" r="5" fill="#FF8FB8"/><circle cx="25" cy="14" r="5" fill="#FF8FB8"/>
+          <circle cx="21.5" cy="25" r="5" fill="#FF8FB8"/><circle cx="10.5" cy="25" r="5" fill="#FF8FB8"/>
+          <circle cx="7" cy="14" r="5" fill="#FF8FB8"/><circle cx="16" cy="16" r="4.5" fill="#FFD54F"/>
+        </svg>Hoa 20/10
+      </div>
+      <div class="date">20 · 10 · 2026</div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-text">
+        <h1 class="pop">Chúc mừng ngày Phụ nữ Việt Nam!</h1>
+        <p>Chúc toàn thể wu mần luôn tràn ngập niềm vui và hạnh phúc. Chọn một tấm thiệp bên dưới để mở quà nhé.</p>
+      </div>
+      <div class="gift pop float" aria-hidden="true">
+        <i style="left:40px;top:90px;width:200px;height:140px;background:#FF8FB8;border-radius:24px"></i>
+        <i style="left:30px;top:70px;width:220px;height:44px;background:#FFD54F;border-radius:16px"></i>
+        <i style="left:122px;top:70px;width:36px;height:160px;background:#FFD54F;border-top:0"></i>
+        <i style="left:84px;top:20px;width:60px;height:56px;background:#FFF;border-radius:50% 50% 0 50%;transform:rotate(-20deg)"></i>
+        <i style="left:136px;top:20px;width:60px;height:56px;background:#FFF;border-radius:50% 50% 50% 0;transform:rotate(20deg)"></i>
+      </div>
+    </section>
+
+    <h2>Chọn người nhận quà</h2>
+    <div class="cards" id="cards"></div>
+
+    <div class="foot">Từ người đẳng cấp nhất trong gia đình.</div>
+  </div>
+
+  <div class="overlay" id="overlay" hidden>
+    <div class="dialog pop" id="dialog" role="dialog" aria-modal="true" aria-labelledby="to">
+      <div class="tag" id="tag"></div>
+      <div class="to" id="to"></div>
+      <div class="msg" id="msg"></div>
+      <div class="lixi" id="lixi">
+        <b>Lì xì nhỏ từ người đẳng cấp nhất nhà</b>
+        <strong>201.026 VND</strong>
+        <span>Con số may mắn: 20/10/26</span>
+      </div>
+      <div><button class="close" id="close" type="button">Đóng</button></div>
+    </div>
+  </div>
+  <div class="coins" id="coins" aria-hidden="true"></div>
+</div>
+
+<script>
+(function () {
+  var people = [
+    { name:'Mẹ', bg:'#FFB3CF', sub:'Mẹ yêu quý', icon:'M12 21s-8-5.2-8-11a4.5 4.5 0 0 1 8-2.8A4.5 4.5 0 0 1 20 10c0 5.8-8 11-8 11z',
+      pat:'radial-gradient(#FFB3CF 2px,transparent 2.5px)', tag:'Dành cho Mẹ', pbg:'#FFF0F6', shadow:'#C2185B', accent:'#C2185B',
+      abg:'#FFB3CF', aborder:'dashed', aradius:'40px', radius:40, tagR:'999px', rot:-3,
+      msg:'Chúc mẹ luôn mạnh khỏe và thật vui.' },
+    { name:'Sếp lớn', bg:'#FFE082', sub:'Chị Hai', icon:'M3 19h18v2H3zM3 17L2 7l5.5 4.5L12 4l4.5 7.5L22 7l-1 10z',
+      pat:'repeating-linear-gradient(45deg,rgba(230,81,0,.10) 0 10px,transparent 10px 20px)', tag:'Dành cho Sếp lớn', pbg:'#FFF8E1', shadow:'#E65100', accent:'#B34700',
+      abg:'#FFE082', aborder:'solid', aradius:'8px', radius:12, tagR:'6px', rot:2,
+      msg:'Chúc sếp lớn luôn vui khỏe và đạt mọi điều mong ước.' },
+    { name:'Sếp nhỏ', bg:'#B3D9FF', sub:'Chị Ba', icon:'M12 2.5l2.9 6.2 6.6.8-4.9 4.6 1.3 6.7L12 17.5l-5.9 3.3 1.3-6.7L2.5 9.5l6.6-.8z',
+      pat:'linear-gradient(rgba(21,101,192,.12) 2px,transparent 2px),linear-gradient(90deg,rgba(21,101,192,.12) 2px,transparent 2px)', tag:'Dành cho Sếp nhỏ', pbg:'#EAF4FF', shadow:'#1565C0', accent:'#0D47A1',
+      abg:'#B3D9FF', aborder:'dotted', aradius:'999px', radius:28, tagR:'14px 4px 14px 4px', rot:-1,
+      msg:'Chúc sếp nhỏ luôn xinh đẹp, hạnh phúc và giàu =)).' }
+  ];
+
+  var $ = function (id) { return document.getElementById(id); };
+  var cards = $('cards'), overlay = $('overlay'), dialog = $('dialog'), coinsEl = $('coins');
+  var lastBtn = null, coinTimer = null;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text) e.textContent = text;
+    return e;
+  }
+
+  // Render recipient cards
+  people.forEach(function (p, i) {
+    var b = el('button', 'card pop');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Mở quà cho ' + p.name);
+    b.style.background = p.bg;
+    b.style.animationDelay = (0.5 + i * 0.12) + 's';
+
+    var ic = el('span', 'icon');
+    var svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('width', '40'); svg.setAttribute('height', '40');
+    svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('aria-hidden', 'true');
+    var path = document.createElementNS(NS, 'path');
+    path.setAttribute('d', p.icon); path.setAttribute('fill', p.accent);
+    path.setAttribute('stroke', '#3B1F3A'); path.setAttribute('stroke-width', '1.6');
+    path.setAttribute('stroke-linejoin', 'round');
+    svg.appendChild(path); ic.appendChild(svg);
+
+    b.appendChild(ic);
+    b.appendChild(el('span', 'name', p.name));
+    b.appendChild(el('span', 'sub', p.sub));
+    b.appendChild(el('span', 'hint', 'Chạm để mở quà'));
+    b.addEventListener('click', function () { openCard(p, b); });
+    cards.appendChild(b);
+  });
+
+  function dropCoins() {
+    coinsEl.textContent = '';
+    for (var i = 0; i < 18; i++) {
+      var c = el('span', 'coin'), s = Math.round(Math.random() * 14 + 22);
+      c.style.left = Math.round(Math.random() * 94 + 2) + '%';
+      c.style.width = c.style.height = s + 'px';
+      c.style.animationDelay = (Math.random() * 0.6).toFixed(2) + 's';
+      c.style.animationDuration = (1.3 + Math.random()).toFixed(2) + 's';
+      coinsEl.appendChild(c);
+    }
+    clearTimeout(coinTimer);
+    coinTimer = setTimeout(function () { coinsEl.textContent = ''; }, 3200);
+  }
+
+  var confetti = [[-200,-70,'#FF6FA5'],[-130,-110,'#FFD54F'],[-60,-130,'#7BD6A5'],[0,-140,'#8EC5FF'],[60,-130,'#FF6FA5'],[130,-110,'#FFD54F'],[200,-70,'#7BD6A5']];
+
+  function openCard(p, btn) {
+    lastBtn = btn;
+    dropCoins();
+    // Reset modal state so the pop-in and confetti animations replay
+    dialog.querySelectorAll('.cf').forEach(function (n) { n.remove(); });
+    confetti.forEach(function (c) {
+      var s = el('span', 'cf');
+      s.style.setProperty('--x', c[0] + 'px'); s.style.setProperty('--y', c[1] + 'px');
+      s.style.background = c[2];
+      dialog.insertBefore(s, dialog.firstChild);
+    });
+    dialog.style.animation = 'none'; void dialog.offsetWidth; /* force reflow */ dialog.style.animation = '';
+
+    dialog.style.backgroundColor = p.pbg;
+    dialog.style.backgroundImage = p.pat;
+    dialog.style.borderRadius = p.radius + 'px';
+    dialog.style.boxShadow = '8px 8px 0 ' + p.shadow;
+    var tag = $('tag');
+    tag.textContent = p.tag; tag.style.background = p.accent;
+    tag.style.borderRadius = p.tagR; tag.style.transform = 'rotate(' + p.rot + 'deg)';
+    var to = $('to'); to.textContent = 'Gửi ' + p.name; to.style.color = p.accent;
+    $('msg').textContent = p.msg;
+    var l = $('lixi');
+    l.style.background = p.abg; l.style.borderStyle = p.aborder; l.style.borderRadius = p.aradius;
+
+    overlay.hidden = false;
+    $('close').focus();
+  }
+
+  function closeCard() {
+    overlay.hidden = true;
+    if (lastBtn) lastBtn.focus();
+  }
+
+  $('close').addEventListener('click', closeCard);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) closeCard(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !overlay.hidden) closeCard(); });
+})();
+</script>
+</body>
+</html>
